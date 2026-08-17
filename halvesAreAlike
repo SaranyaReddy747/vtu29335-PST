@@ -1,0 +1,24 @@
+class Solution {
+    public boolean halvesAreAlike(String s) {
+        int mid = s.length() / 2;
+        int vowelCount = 0;
+        
+        // String containing all valid uppercase and lowercase vowels
+        String vowels = "aeiouAEIOU";
+        
+        // Loop through both halves at the same time
+        for (int i = 0; i < mid; i++) {
+            // Check the first half: increment counter if it's a vowel
+            if (vowels.indexOf(s.charAt(i)) != -1) {
+                vowelCount++;
+            }
+            // Check the second half: decrement counter if it's a vowel
+            if (vowels.indexOf(s.charAt(i + mid)) != -1) {
+                vowelCount--;
+            }
+        }
+        
+        // If the counts balance out to 0, both halves are alike
+        return vowelCount == 0;
+    }
+}
